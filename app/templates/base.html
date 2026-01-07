@@ -24,7 +24,9 @@
         {% endif %}
 
         {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/tailwind.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
