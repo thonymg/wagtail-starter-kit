@@ -1,3 +1,8 @@
+{% load  wagtailimages_tags debug_tags  %}
+
+<pre>{{ posts|json_context }}</pre>
+
+
 {% for blog in posts %}
   <a href="{{ blog.url }}" class="block p-4 border border-base-200 hover:shadow-lg transition bg-base-100 rounded-box">
     <h2 class="text-xl font-bold text-base-content">{{ blog.title }}</h2>
