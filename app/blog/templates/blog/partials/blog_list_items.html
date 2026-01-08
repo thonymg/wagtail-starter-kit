@@ -1,0 +1,23 @@
+{% for blog in posts %}
+  <a href="{{ blog.url }}" class="block p-4 border border-base-200 hover:shadow-lg transition bg-base-100 rounded-box">
+    <h2 class="text-xl font-bold text-base-content">{{ blog.title }}</h2>
+    <p class="text-sm text-base-content/70">{{ blog.date }}</p>
+    <p class="mt-2 text-base-content">{{ blog.intro }}</p>
+  </a>
+{% endfor %}
+
+{% if posts.has_next %}
+  <div class="flex justify-center py-8 w-full">
+    <button class="btn btn-primary btn-wide"
+            hx-get="?page={{ posts.next_page_number }}"
+            hx-target="closest div"
+            hx-swap="outerHTML"
+            hx-trigger="click, revealed"
+            hx-indicator="#loading-spinner">
+      Voir plus
+    </button>
+  </div>
+  <div id="loading-spinner" class="htmx-indicator flex justify-center w-full py-4">
+    <span class="loading loading-spinner loading-lg text-primary"></span>
+  </div>
+{% endif %}

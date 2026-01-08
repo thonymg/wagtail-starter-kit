@@ -17,6 +17,11 @@ urlpatterns = [
 
 
 if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+ 
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -24,6 +29,7 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += [path("__reload__/", include("django_browser_reload.urls"))]
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
 
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to

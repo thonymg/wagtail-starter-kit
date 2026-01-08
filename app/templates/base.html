@@ -27,6 +27,17 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/tailwind.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof htmx === 'undefined') {
+                    console.error('HTMX is NOT loaded!');
+                } else {
+                    console.log('HTMX loaded version:', htmx.version);
+                    htmx.logAll(); // Enable logging to console
+                }
+            });
+        </script>
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
@@ -34,7 +45,6 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
 
         {% block content %}{% endblock %}
 
