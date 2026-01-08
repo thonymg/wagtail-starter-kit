@@ -63,7 +63,7 @@ If you haven't changed `.env` the app will default to:
 
 ## Working with the fronend
 
-The project uses [Pico CSS](https://picocss.com/) for styling. It's a minmal setup that you can build on.
+The project uses [Tailwind CSS](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com/) for styling. It provides a utility-first framework with ready-to-use components.
 
 When you first run the project you may notice that no styling is applied. This is because the first time you run the project with `make up` the compiled frontend files might not be available. Just run the frontend build script and refresh the page. [Read on](./docs/frontend-development.md)
 
