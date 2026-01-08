@@ -25,6 +25,7 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 # Application definition
 
 INSTALLED_APPS = [
+    "app.blog",
     "app.home",
     "app.search",
     "wagtail.contrib.forms",
