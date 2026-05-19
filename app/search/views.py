@@ -1,32 +1,18 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import JsonResponse
 from django.template.response import TemplateResponse
 from wagtail.models import Page
-
-# To enable logging of search queries for use with the "Promoted search results" module
-# <https://docs.wagtail.org/en/stable/reference/contrib/searchpromotions.html>
-# uncomment the following line and the lines indicated in the search function
-# (after adding wagtail.contrib.search_promotions to INSTALLED_APPS):
-
-# from wagtail.contrib.search_promotions.models import Query
 
 
 def search(request):
     search_query = request.GET.get("query", None)
     page = request.GET.get("page", 1)
 
-    # Search
     if search_query:
         search_results = Page.objects.live().search(search_query)
-
-        # To log this query for use with the "Promoted search results" module:
-
-        # query = Query.get(search_query)
-        # query.add_hit()
-
     else:
         search_results = Page.objects.none()
 
-    # Pagination
     paginator = Paginator(search_results, 10)
     try:
         search_results = paginator.page(page)
@@ -43,3 +29,25 @@ def search(request):
             "search_results": search_results,
         },
     )
+
+
+def search_api(request):
+    """JSON endpoint consumed by the SearchBar Vue island."""
+    query = request.GET.get("query", "").strip()
+
+    if not query:
+        return JsonResponse({"results": [], "total": 0})
+
+    raw_results = Page.objects.live().search(query)
+
+    results = [
+        {
+            "id": page.id,
+            "title": page.title,
+            "url": page.get_url(request),
+            "description": page.search_description or "",
+        }
+        for page in raw_results[:10]
+    ]
+
+    return JsonResponse({"results": results, "total": len(results)})

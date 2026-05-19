@@ -12,6 +12,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path("api/search/", search_views.search_api, name="search-api"),
     # Remove if not required
     path("style-guide/", include("app.style_guide.urls")),
 ]

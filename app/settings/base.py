@@ -27,6 +27,7 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 INSTALLED_APPS = [
     "app.home",
     "app.search",
+    "django_vite",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.contrib.table_block",
@@ -206,6 +207,16 @@ WAGTAILADMIN_BASE_URL = os.getenv("WAGTAILADMIN_BASE_URL", "http://localhost:800
 # This can be omitted to allow all files, but note that this may present a security risk
 # if untrusted users are allowed to upload files -
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
+# django-vite — production mode by default; dev.py overrides dev_mode to True
+DJANGO_VITE = {
+    "default": {
+        "dev_mode": False,
+        "dev_server_port": 5173,
+        # Vite 5 writes the manifest inside .vite/ within the outDir
+        "manifest_path": BASE_DIR / "static_compiled" / ".vite" / "manifest.json",
+    }
+}
+
 WAGTAILDOCS_EXTENSIONS = [
     "csv",
     "docx",
