@@ -1,16 +1,11 @@
-{% extends "base.html" %}
-{% load static wagtailcore_tags %}
-
-{% block body_class %}template-searchresults{% endblock %}
-
-{% block title %}Search{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static wagtailcore_tags %} {% block body_class
+%}template-searchresults{% endblock %} {% block title %}Search{% endblock %} {% block
+content %}
 <main class="container">
   <h1>Search</h1>
 
-  {# Vue island — live search with Pinia store.
-     initialQuery hydrates the store from the Django SSR context. #}
+  {# Vue island — live search with Pinia store. initialQuery hydrates the store from the
+  Django SSR context. #}
   <div
     id="vue-search-bar"
     data-props='{"initialQuery": "{{ search_query|default:""| escapejs }}"}'
@@ -22,9 +17,15 @@
       <input
         type="text"
         name="query"
-        {% if search_query %}value="{{ search_query }}"{% endif %}
-      >
-      <input type="submit" value="Search" class="button">
+        {%
+        if
+        search_query
+        %}value="{{ search_query }}"
+        {%
+        endif
+        %}
+      />
+      <input type="submit" value="Search" class="button" />
     </form>
 
     {% if search_results %}
@@ -32,24 +33,22 @@
       {% for result in search_results %}
       <li>
         <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-        {% if result.search_description %}
-        {{ result.search_description }}
-        {% endif %}
+        {% if result.search_description %} {{ result.search_description }} {% endif %}
       </li>
       {% endfor %}
     </ul>
 
     {% if search_results.has_previous %}
-    <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
-    {% endif %}
-
-    {% if search_results.has_next %}
-    <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
-    {% endif %}
-
-    {% elif search_query %}
-    No results found
-    {% endif %}
+    <a
+      href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}"
+      >Previous</a
+    >
+    {% endif %} {% if search_results.has_next %}
+    <a
+      href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}"
+      >Next</a
+    >
+    {% endif %} {% elif search_query %} No results found {% endif %}
   </noscript>
 </main>
 {% endblock %}

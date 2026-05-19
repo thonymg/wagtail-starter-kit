@@ -24,6 +24,7 @@ The `create_sample_media` command generates realistic sample content including:
 - **ZIP Archives**: Compressed archives containing collections of documents with README files
 
 This command is perfect for:
+
 - Populating a new Wagtail site with test content
 - Demonstrating media management features
 - Testing search functionality with varied content
@@ -50,17 +51,18 @@ python manage.py create_sample_media --reset
 
 ### Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `--images` | Integer | 75 | Number of sample images to create |
-| `--documents` | Integer | 50 | Number of sample documents to create |
-| `--clear` | Flag | False | Clear existing images and documents before creating new ones |
-| `--no-zip` | Flag | False | Skip creating ZIP archives of the documents |
-| `--reset` | Flag | False | Delete all existing images and documents without creating new ones |
+| Option        | Type    | Default | Description                                                        |
+| ------------- | ------- | ------- | ------------------------------------------------------------------ |
+| `--images`    | Integer | 75      | Number of sample images to create                                  |
+| `--documents` | Integer | 50      | Number of sample documents to create                               |
+| `--clear`     | Flag    | False   | Clear existing images and documents before creating new ones       |
+| `--no-zip`    | Flag    | False   | Skip creating ZIP archives of the documents                        |
+| `--reset`     | Flag    | False   | Delete all existing images and documents without creating new ones |
 
 ### Generated Content Details
 
 #### Images
+
 - **Formats**: JPEG with 85% quality
 - **Sizes**: Multiple dimensions including landscape (800x600), portrait (600x800), banners (1200x400), squares (400x400), and standard (1024x768)
 - **Visual Elements**: Random geometric shapes, lines, and color combinations
@@ -70,6 +72,7 @@ python manage.py create_sample_media --reset
   - Example: `"Modern Architecture - Technology #321"`
 
 #### Documents
+
 - **Format**: UTF-8 encoded text files (.txt)
 - **Structure**: Professional document layout with headers, metadata, and sections
 - **Content**: Realistic business document types including:
@@ -88,6 +91,7 @@ python manage.py create_sample_media --reset
   - Example: `"User Manual - Phoenix Initiative #3281"`
 
 #### ZIP Archives
+
 When not using `--no-zip`, the command creates:
 
 1. **Complete Archive**: Contains all generated documents plus a README
@@ -97,6 +101,7 @@ When not using `--no-zip`, the command creates:
    - User Guides and Manuals
 
 Each ZIP file includes:
+
 - All relevant documents
 - A README.txt file explaining the archive contents
 - Proper file organization
@@ -104,16 +109,19 @@ Each ZIP file includes:
 ### Examples
 
 #### Creating a small test set
+
 ```bash
 docker exec -it wagtail-starter-kit-app-1 python manage.py create_sample_media --images 5 --documents 3 --no-zip
 ```
 
 #### Setting up a demo environment
+
 ```bash
 docker exec -it wagtail-starter-kit-app-1 python manage.py create_sample_media --clear --images 25 --documents 15
 ```
 
 #### Cleaning up all test content
+
 ```bash
 docker exec -it wagtail-starter-kit-app-1 python manage.py create_sample_media --reset
 ```
@@ -121,6 +129,7 @@ docker exec -it wagtail-starter-kit-app-1 python manage.py create_sample_media -
 ### Technical Implementation
 
 #### Dependencies
+
 - **PIL (Pillow)**: For dynamic image generation
 - **zipfile**: For creating compressed archives
 - **Wagtail**: Uses `wagtail.images.models.Image` and `wagtail.documents.models.Document`

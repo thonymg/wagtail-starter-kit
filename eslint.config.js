@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import prettier from 'eslint-config-prettier'
 import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 
@@ -8,6 +9,8 @@ export default [
 
   // Vue 3 recommended rules — in v10 the vue3- prefix was dropped
   ...pluginVue.configs['flat/recommended'],
+
+  prettier,
 
   {
     languageOptions: {
@@ -31,11 +34,6 @@ export default [
   },
 
   {
-    ignores: [
-      'static_compiled/**',
-      'static/**',
-      'node_modules/**',
-      'scripts/**',
-    ],
+    ignores: ['static_compiled/**', 'static/**', 'node_modules/**', 'scripts/**'],
   },
 ]

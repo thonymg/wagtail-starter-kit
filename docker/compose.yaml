@@ -5,9 +5,9 @@ services:
       dockerfile: docker/Dockerfile
     volumes:
       - ..:/app
-      - /app/static_compiled  # Keep image-built assets; don't mount over them
+      - /app/static_compiled # Keep image-built assets; don't mount over them
     ports:
-      - "8000:8000"
+      - '8000:8000'
     env_file:
       - ../.env
     environment:
@@ -20,7 +20,7 @@ services:
     image: mailhog/mailhog:latest
     platform: linux/amd64
     logging:
-      driver: "none"
+      driver: 'none'
     ports:
-      - "1025:1025"  # SMTP
-      - "8025:8025"  # Web UI
+      - '1025:1025' # SMTP
+      - '8025:8025' # Web UI

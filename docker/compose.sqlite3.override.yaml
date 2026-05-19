@@ -14,4 +14,4 @@ services:
       - ../config:/config
       - ../db.sqlite3:/app/db.sqlite3
     ports:
-      - "8080:3000"
+      - '8080:3000'

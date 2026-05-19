@@ -84,12 +84,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "app.wsgi.application"
+ASGI_APPLICATION = "app.asgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if os.getenv("MYSQL_DATABASE", None):
+database_driver = os.getenv("DATABASE", "sqlite").lower()
+
+if database_driver == "mysql":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
@@ -100,7 +103,7 @@ if os.getenv("MYSQL_DATABASE", None):
             "PORT": os.getenv("MYSQL_PORT"),
         }
     }
-elif os.getenv("POSTGRES_DB", None):
+elif database_driver == "postgres":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",

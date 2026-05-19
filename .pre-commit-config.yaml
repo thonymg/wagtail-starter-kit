@@ -15,12 +15,12 @@ repos:
       # Run the formatter
       - id: ruff-format
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.2  # Keep in sync with locked version
+    rev: v3.21.2 # Keep in sync with locked version
     hooks:
-    -   id: pyupgrade
+      - id: pyupgrade
         args: [--py310-plus]
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 1.29.1  # Keep in sync with locked version
+    rev: 1.29.1 # Keep in sync with locked version
     hooks:
-    -   id: django-upgrade
-        args: [--target-version, "5.2"]   # Replace with Django version
+      - id: django-upgrade
+        args: [--target-version, '5.2'] # Replace with Django version

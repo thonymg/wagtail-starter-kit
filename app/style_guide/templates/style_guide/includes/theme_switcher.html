@@ -1,13 +1,11 @@
+<article>
+  {# Vue island — ThemeSwitcher backed by uiStore (Pinia) #}
+  <div id="vue-theme-switcher"></div>
 
-    <article>
-
-      {# Vue island — ThemeSwitcher backed by uiStore (Pinia) #}
-      <div id="vue-theme-switcher"></div>
-
-      <hr>
-      <details>
-          <summary>Theme Switcher — Vue Island + Pinia</summary>
-          <pre><code>
+  <hr />
+  <details>
+    <summary>Theme Switcher — Vue Island + Pinia</summary>
+    <pre><code>
 {# stores/ui.js #}
 export const useUiStore = defineStore('ui', {
   state: () => ({ theme: localStorage.getItem('picoPreferredColorScheme') ?? 'auto' }),
@@ -40,5 +38,5 @@ const ui = useUiStore()
   &lt;/details&gt;
 &lt;/template&gt;
           </code></pre>
-        </details>
-      </article>
+  </details>
+</article>

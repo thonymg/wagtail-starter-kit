@@ -1,5 +1,5 @@
 /* Tailwind v4 — single directive activates all utilities + content scanning */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Pico CSS — prebuilt pumpkin theme, no Sass compilation needed */
-@import "@picocss/pico/css/pico.pumpkin.css";
+@import '@picocss/pico/css/pico.pumpkin.css';

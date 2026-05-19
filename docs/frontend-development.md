@@ -16,7 +16,7 @@ The project make no assumption about JavaScript libraries. You can add your own 
 
 ## Building the frontend (with reload)
 
- You can run the build tools with the following commands run from the root of the project:
+You can run the build tools with the following commands run from the root of the project:
 
 ```bash
 nvm use

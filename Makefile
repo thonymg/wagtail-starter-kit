@@ -28,6 +28,8 @@ help:
 	@echo "  logs         Tail app container logs"
 	@echo ""
 	@echo "Maintenance"
+	@echo "  format       Format (Prettier + Ruff)"
+	@echo "  format-check Check formatting (Prettier + Ruff)"
 	@echo "  reset        Reset local database and migrations"
 	@echo "  clean        Remove all generated files"
 	@echo "  test         Run Django tests inside Docker"
@@ -44,10 +46,10 @@ check-env:
 
 .PHONY: dev
 dev: check-env
-	npm install && npm run build
+	npm install
 	uv sync
 	uv run python manage.py migrate --settings=app.settings.dev
-	uv run python manage.py runserver --settings=app.settings.dev
+	@sh -c 'npm run dev -- --port 5173 --strictPort & vitePid=$$!; trap "kill $$vitePid" INT TERM EXIT; uv run python manage.py runserver --settings=app.settings.dev'
 
 # ── Docker ────────────────────────────────────────────────────────────────────
 
@@ -69,6 +71,18 @@ logs:
 	$(DC) logs -f app
 
 # ── Maintenance ───────────────────────────────────────────────────────────────
+
+.PHONY: format
+format:
+	npm run format
+	uv run ruff format
+	uv run ruff check --fix
+
+.PHONY: format-check
+format-check:
+	npm run format:check
+	uv run ruff format --check
+	uv run ruff check
 
 .PHONY: reset
 reset:

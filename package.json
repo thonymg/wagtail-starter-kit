@@ -10,6 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint static_src/js",
     "lint:fix": "eslint static_src/js --fix",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,vue,css,json,yaml,yml,md}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{js,cjs,mjs,vue,css,json,yaml,yml,md}\" --ignore-path .gitignore",
     "images": "node scripts/images.cjs",
     "clean": "rm -rf static_compiled"
   },
@@ -37,10 +39,18 @@
     "@picocss/pico": "^2.1.1",
     "@vitejs/plugin-vue": "^5.2.3",
     "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-vue": "^10.9.1",
     "globals": "^17.6.0",
+    "prettier": "^3.6.2",
     "sharp": "^0.34.5",
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^8.1.2"
+  },
+  "prettier": {
+    "printWidth": 88,
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
   }
 }

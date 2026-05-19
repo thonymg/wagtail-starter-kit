@@ -26,6 +26,7 @@ Required:
 - [Node.js](https://nodejs.org/en/) (for frontend build tools) (for frontend build tools in development)
 
 Optional:
+
 - [Git](https://git-scm.com/) (optional, for version control)
 - [Make](https://www.gnu.org/software/make/) (optional, for running commands)
 - [NVM](https://github.com/nvm-sh/nvm) (optional, for managing Node versions)
@@ -100,7 +101,7 @@ Currently there is no deployment setup included in this project. You could try t
 ## Deployment Examples
 
 1.  How to deploy a Wagtail site to [PythonAnywhere](https://www.nickmoreton.co.uk/articles/deploy-wagtail-cms-to-pythonanywhere/), this does need you to have a paid account with PythonAnywhere.
-2. This [example](https://github.com/wagtail-examples/wsk-deploy-python-anywhere) is a fork of this starter kit which has documentation on how to deploy to PythonAnywhere, using a free account.
+2.  This [example](https://github.com/wagtail-examples/wsk-deploy-python-anywhere) is a fork of this starter kit which has documentation on how to deploy to PythonAnywhere, using a free account.
 
 ## Bonus branches
 
