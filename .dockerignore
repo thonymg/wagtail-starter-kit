@@ -3,6 +3,13 @@
 /static/
 *.sqlite3
 
+# Frontend build output — produced by the Node stage in Dockerfile,
+# never brought in from the local workspace into the Python stage
+/static_compiled/
+
+# Git history — not needed in any stage
+/.git/
+
 # Python and others
 __pycache__
 *.pyc
