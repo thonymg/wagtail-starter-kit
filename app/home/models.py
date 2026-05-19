@@ -3,6 +3,8 @@ from wagtail.models import Page
 
 
 class HomePage(Page):
+    template = "home/home_page.html"
+
     def get_context(self, request):
         context = super().get_context(request)
         context["wagtail_version"] = WAGTAIL_VERSION

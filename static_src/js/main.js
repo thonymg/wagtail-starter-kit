@@ -7,6 +7,7 @@ import { pinia } from './stores/root.js'
 const islandRegistry = {
   'vue-theme-switcher': () => import('./islands/ThemeSwitcher.vue'),
   'vue-search-bar': () => import('./islands/SearchBar.vue'),
+  'vue-home-example': () => import('./islands/HomeExample.vue'),
 }
 
 document.addEventListener('DOMContentLoaded', () => {
