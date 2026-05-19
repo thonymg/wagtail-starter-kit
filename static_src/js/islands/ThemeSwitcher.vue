@@ -23,12 +23,26 @@ function select(value) {
 
 <template>
   <details class="dropdown">
-    <summary role="button" class="contrast">Theme</summary>
+    <summary
+      role="button"
+      class="contrast"
+    >
+      Theme
+    </summary>
     <ul>
-      <li v-for="opt in options" :key="opt.value">
-        <a href="#" @click.prevent="select(opt.value)">
+      <li
+        v-for="opt in options"
+        :key="opt.value"
+      >
+        <a
+          href="#"
+          @click.prevent="select(opt.value)"
+        >
           {{ opt.label }}
-          <span v-if="theme === opt.value" aria-hidden="true"> ✓</span>
+          <span
+            v-if="theme === opt.value"
+            aria-hidden="true"
+          > ✓</span>
         </a>
       </li>
     </ul>

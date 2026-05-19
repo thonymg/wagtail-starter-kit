@@ -1,13 +1,18 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
+import vueDevTools from 'vite-plugin-vue-devtools'
 import { resolve } from 'path'
 
-export default defineConfig({
+// Use function form to access `mode` — devtools are excluded from production builds
+export default defineConfig(({ mode }) => ({
   plugins: [
     tailwindcss(),
     vue(),
-  ],
+    // Vue DevTools overlay: component tree, Pinia stores, events, router
+    // Only loaded in dev mode — zero impact on production bundle
+    mode === 'development' && vueDevTools(),
+  ].filter(Boolean),
 
   // static_src is the frontend root — all JS/CSS paths are relative to it
   root: resolve(__dirname, 'static_src'),
@@ -32,4 +37,4 @@ export default defineConfig({
     strictPort: true,
     cors: true,
   },
-})
+}))

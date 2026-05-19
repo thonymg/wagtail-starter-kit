@@ -31,11 +31,20 @@ onMounted(() => {
       placeholder="Search pages…"
       aria-label="Search"
       :aria-busy="loading"
-    />
+    >
 
-    <div v-if="loading" aria-busy="true" class="search-status">Searching…</div>
+    <div
+      v-if="loading"
+      aria-busy="true"
+      class="search-status"
+    >
+      Searching…
+    </div>
 
-    <p v-else-if="error" class="search-error">
+    <p
+      v-else-if="error"
+      class="search-error"
+    >
       <small>{{ error }}</small>
     </p>
 
@@ -46,9 +55,12 @@ onMounted(() => {
     <template v-else-if="results.length > 0">
       <p><small>{{ total }} result{{ total !== 1 ? 's' : '' }}</small></p>
       <ul class="search-results">
-        <li v-for="result in results" :key="result.id">
+        <li
+          v-for="result in results"
+          :key="result.id"
+        >
           <a :href="result.url">{{ result.title }}</a>
-          <br v-if="result.description" />
+          <br v-if="result.description">
           <small v-if="result.description">{{ result.description }}</small>
         </li>
       </ul>

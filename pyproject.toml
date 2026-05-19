@@ -21,7 +21,10 @@ mysql = ["mysqlclient>=2.2"]
 [dependency-groups]
 dev = [
     "coverage",
+    "django-debug-toolbar>=6.3.0",
+    "django-extensions>=4.1",
     "django-upgrade",
+    "ipython>=8.39.0",
     "pre-commit",
     "pyupgrade",
     "ruff",
