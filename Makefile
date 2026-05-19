@@ -36,8 +36,8 @@ help:
 .PHONY: check-env
 check-env:
 	@if [ ! -f .env ]; then \
-		echo "Error: .env not found. Copy .env.example → .env and fill in values."; \
-		exit 1; \
+		echo "No .env found — copying .env.example to .env"; \
+		cp .env.example .env; \
 	fi
 
 # ── Local development ─────────────────────────────────────────────────────────
