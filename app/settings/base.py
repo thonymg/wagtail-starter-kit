@@ -25,6 +25,8 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 # Application definition
 
 INSTALLED_APPS = [
+    # daphne must come before django.contrib.staticfiles to override runserver with ASGI
+    "daphne",
     "app.home",
     "app.search",
     "django_vite",

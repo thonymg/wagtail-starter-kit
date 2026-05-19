@@ -1,5 +1,5 @@
 services:
-  # SQLite browser UI — accessible at http://localhost:8080
+  # SQLite browser GUI — http://localhost:8080
   # https://hub.docker.com/r/linuxserver/sqlitebrowser
   sqlitebrowser:
     image: lscr.io/linuxserver/sqlitebrowser:latest
@@ -7,11 +7,11 @@ services:
     security_opt:
       - seccomp:unconfined
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      PUID: 1000
+      PGID: 1000
+      TZ: Etc/UTC
     volumes:
-      - ./config:/config
-      - ./db.sqlite3:/app/db.sqlite3
+      - ../config:/config
+      - ../db.sqlite3:/app/db.sqlite3
     ports:
-      - 8080:3000
+      - "8080:3000"

@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      args:
+        EXTRAS: mysql  # installs mysqlclient from optional-dependencies
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    # mysql_native_password required for mysqlclient compatibility
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    env_file:
+      - ../.env
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${MYSQL_USER}", "-p${MYSQL_PASSWORD}"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
+
+  # Database GUI — http://localhost:8080 (choose MySQL, server: db)
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+
+volumes:
+  dbdata:

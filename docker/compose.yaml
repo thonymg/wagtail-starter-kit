@@ -1,0 +1,26 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ..:/app
+      - /app/static_compiled  # Keep image-built assets; don't mount over them
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    environment:
+      # Explicit overrides on top of .env — keeps dev settings predictable
+      DJANGO_SETTINGS_MODULE: app.settings.dev
+    command: tail -f /dev/null
+
+  # Email catch-all for development — UI at http://localhost:8025
+  mailhog:
+    image: mailhog/mailhog:latest
+    platform: linux/amd64
+    logging:
+      driver: "none"
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
